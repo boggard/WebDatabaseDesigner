@@ -11,10 +11,9 @@ angular
                 ariaDescribedBy: 'modal-body',
                 templateUrl: 'tableModal',
                 controller: 'tableController',
-                controllerAs: 'tableCtrl',
-                backdrop: 'static'
+                controllerAs: 'tableCtrl'
             }).result.catch(function(res) {
-                if (!(res === 'cancel' || res === 'escape key press')) {
+                if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
                     throw res;
                 }
             });

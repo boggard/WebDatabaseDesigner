@@ -1,13 +1,33 @@
 <html>
 <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Добавление таблицы</h3>
+    <h3 class="modal-title" id="modal-title">Добавление таблицы:<input ng-model="tableCtrl.table.name"></h3>
 </div>
 <div class="ph-container">
     <div class="ph-content">
         <div class="modal-body">
-            Тут дела с табличкой
+                <div contenteditable
+                     name="myWidget" ng-model="tableCtrl.table.name" ng-bind="tableCtrl.table.name"></div>
+            <table st-table="tableCtrl.table.fields" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Тип</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="field in tableCtrl.table.fields">
+                    <td contenteditable ng-model="name"></td>
+                    <td contenteditable="true">{{field.type}}</td>
+                    <td>
+                        <button ng-click="tableCtrl.removeField(field)">Удалить</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button ng-click="tableCtrl.addField()">Добавить</button>
         </div>
         <div class="modal-footer">
+            <button ng-click="tableCtrl.addTable()">Добавить</button>
             <button ng-click="tableCtrl.cancel()">Отмена</button>
         </div>
     </div>

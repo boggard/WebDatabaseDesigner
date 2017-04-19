@@ -1,4 +1,4 @@
 'use strict';
 (function () {
-angular.module('wdd', ['ui.bootstrap']);
+angular.module('wdd', ['ui.bootstrap', 'ngSanitize']);
 })();

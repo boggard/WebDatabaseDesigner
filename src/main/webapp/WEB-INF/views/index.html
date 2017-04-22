@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" th:src="@{js/libs/jsplumb.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/vis.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular-sanitize.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/ui-bootstrap-tpls-2.5.0.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/smart-table.min.js}"></script>
-    <link th:href="@{css/libs/vis.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/libs/jsPlumbToolkit-defaults.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/libs/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/designer.css}" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" th:src="@{js/app.js}"></script>
     <script type="text/javascript" th:src="@{js/mainController.js}"></script>
     <script type="text/javascript" th:src="@{js/tableController.js}"></script>
-
+    <script type="text/javascript" th:src="@{js/contenteditableDirective.js}"></script>
+    <script type="text/javascript" th:src="@{js/designer.js}"></script>
+    <style type="text/css">
+        #container0, #container1 {
+            float: left;
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body ng-app="wdd">
 <div ng-controller="mainController as mainCtrl">
@@ -23,12 +34,34 @@
         <div th:insert="tableModal"></div>
     </script>
     <button ng-click="mainCtrl.addTable()">{{mainCtrl.text}}</button>
-    <div id="network">
-
+    <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
+        <div class="table-node" id="dragDropWindow1">
+            <div class="table-caption">
+                Таблица
+            </div>
+            <div class="table-fields">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>BIGINT</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>VARCHAR</td>
+                    </tr>
+                    <tr>
+                        <td>role</td>
+                        <td>VARCHAR</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
 </body>
 
-<script type="text/javascript" th:src="@{js/designer.js}"></script>
+
 </html>

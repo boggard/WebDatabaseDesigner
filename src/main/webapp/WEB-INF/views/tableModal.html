@@ -5,8 +5,6 @@
 <div class="ph-container">
     <div class="ph-content">
         <div class="modal-body">
-                <div contenteditable
-                     name="myWidget" ng-model="tableCtrl.table.name" ng-bind="tableCtrl.table.name"></div>
             <table st-table="tableCtrl.table.fields" class="table table-striped">
                 <thead>
                 <tr>
@@ -16,8 +14,8 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="field in tableCtrl.table.fields">
-                    <td contenteditable ng-model="name"></td>
-                    <td contenteditable="true">{{field.type}}</td>
+                    <td contenteditable ng-model="field.name"></td>
+                    <td contenteditable ng-model="field.type"></td>
                     <td>
                         <button ng-click="tableCtrl.removeField(field)">Удалить</button>
                     </td>

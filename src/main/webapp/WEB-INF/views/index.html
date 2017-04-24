@@ -7,6 +7,7 @@
     <script type="text/javascript" th:src="@{js/libs/vis.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular-sanitize.min.js}"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script type="text/javascript" th:src="@{js/libs/ui-bootstrap-tpls-2.5.0.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/smart-table.min.js}"></script>
     <link th:href="@{css/libs/jsPlumbToolkit-defaults.css}" rel="stylesheet" type="text/css"/>
@@ -17,6 +18,8 @@
     <script type="text/javascript" th:src="@{js/mainController.js}"></script>
     <script type="text/javascript" th:src="@{js/tableController.js}"></script>
     <script type="text/javascript" th:src="@{js/contenteditableDirective.js}"></script>
+    <script type="text/javascript" th:src="@{js/htmlFilter.js}"></script>
+    <script type="text/javascript" th:src="@{js/compileDirective.js}"></script>
     <script type="text/javascript" th:src="@{js/designer.js}"></script>
     <style type="text/css">
         #container0, #container1 {
@@ -59,6 +62,9 @@
             </div>
         </div>
     </div>
+    <!--<div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>-->
+    <!--<div ng-bind-html="mainCtrl.variable | trust"></div>-->
+    <div compile="mainCtrl.h"></div>
 </div>
 
 </body>

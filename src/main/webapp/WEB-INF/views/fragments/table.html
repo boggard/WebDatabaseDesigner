@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="table-node">
+<div class="table-node" id="dragDropWindow1">
     <div class="table-caption">
-        Таблица
+        {{name}}
     </div>
     <div class="table-fields">
-        Филды
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td>id</td>
+                <td>BIGINT</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>role</td>
+                <td>VARCHAR</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </html>

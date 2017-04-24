@@ -1,6 +1,6 @@
 angular
     .module('wdd')
-    .controller('tableController', ['$uibModalInstance', '$scope', function (modalInstance, scope) {
+    .controller('tableController', ['$uibModalInstance', '$scope', '$sce', function (modalInstance, scope, sce) {
 
         var self = this;
 
@@ -36,10 +36,7 @@ angular
         };
 
         self.addTable = function () {
-            setLabel(self.table);
-            nodes.add(self.table);
-
-            self.cancel();
+            modalInstance.close('privet');
         };
 
         return self;

@@ -38,9 +38,10 @@
     </script>
     <button ng-click="mainCtrl.addTable()">{{mainCtrl.text}}</button>
     <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
-        <div class="table-node" id="dragDropWindow1">
+        <div ng-repeat="table in mainCtrl.tables">
+            <div class="table-node" ng-attr-id="{{table.name}}">
             <div class="table-caption">
-                Таблица
+                {{table.name}}
             </div>
             <div class="table-fields">
                 <table class="table table-bordered">
@@ -60,6 +61,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
     <!--<div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>-->

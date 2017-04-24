@@ -5,6 +5,7 @@ angular
         self.text = "asd";
 
         self.addTable = function () {
+            self.items.push({id: 3});
             var modalInstance = uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
@@ -21,10 +22,14 @@ angular
             });
         };
 
-        self.items = [{
-            id: 1
+        self.tables = [{
+            label: '',
+            name: 'Table1',
+            fields: []
         }, {
-            id: 2
+            label: '',
+            name: 'Table2',
+            fields: []
         }];
 
         self.h = '<div ng-repeat="item in mainCtrl.items">{{item.id}}</div>';

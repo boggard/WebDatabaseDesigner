@@ -79,7 +79,7 @@ jsPlumb.bind("ready", function () {
         dropOptions: exampleDropOptions
     };
 
-    var e1 = instance.addEndpoint('dragDropWindow1', {anchor: [0.5, 1, 0, 1]}, exampleEndpoint2);
+    var e1 = instance.addEndpoint('Table1', {anchor: [0.5, 1, 0, 1]}, exampleEndpoint2);
 
     instance.draggable(jsPlumb.getSelector(".table-node"));
 });

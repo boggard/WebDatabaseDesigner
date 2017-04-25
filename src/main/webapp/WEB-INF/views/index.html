@@ -36,37 +36,26 @@
     <script type="text/ng-template" id="tableModal">
         <div th:insert="tableModal"></div>
     </script>
-    <button ng-click="mainCtrl.addTable()">{{mainCtrl.text}}</button>
+    <button ng-click="mainCtrl.addTable()">Добавить таблицу</button>
     <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
         <div ng-repeat="table in mainCtrl.tables">
             <div class="table-node" ng-attr-id="{{table.name}}">
-            <div class="table-caption">
-                {{table.name}}
+                <div class="table-caption">
+                    {{table.name}}
+                </div>
+                <div class="table-fields">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr ng-repeat="field in table.fields">
+                            <td>{{field.name}}</td>
+                            <td>{{field.type}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="table-fields">
-                <table class="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <td>id</td>
-                        <td>BIGINT</td>
-                    </tr>
-                    <tr>
-                        <td>name</td>
-                        <td>VARCHAR</td>
-                    </tr>
-                    <tr>
-                        <td>role</td>
-                        <td>VARCHAR</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
         </div>
     </div>
-    <!--<div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>-->
-    <!--<div ng-bind-html="mainCtrl.variable | trust"></div>-->
-    <div compile="mainCtrl.h"></div>
 </div>
 
 </body>

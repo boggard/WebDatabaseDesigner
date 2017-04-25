@@ -1,6 +1,4 @@
-angular
-    .module('wdd')
-    .directive('contenteditable', ['$sce', function ($sce) {
+app.directive('contenteditable', ['$sce', function ($sce) {
         return {
             restrict: 'A', // only activate on element attribute
             require: '?ngModel', // get a hold of NgModelController

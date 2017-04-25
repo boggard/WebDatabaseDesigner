@@ -40,6 +40,8 @@ var options = {
 // initialize your network!
  var network = new vis.Network(container, data, options);*/
 
+var instance;
+
 jsPlumb.bind("ready", function () {
     /*var e0 = jsPlumb.addEndpoint("container0"),
      e1 = jsPlumb.addEndpoint("container1");
@@ -48,7 +50,7 @@ jsPlumb.bind("ready", function () {
 
      jsPlumb.connect({ source:e0, anchor:dynamicAnchors, target:e1});*/
 
-    var instance = jsPlumb.getInstance({
+    instance = jsPlumb.getInstance({
         DragOptions: {cursor: 'pointer', zIndex: 2000},
         PaintStyle: {stroke: '#666'},
         EndpointHoverStyle: {fill: "orange"},
@@ -79,7 +81,11 @@ jsPlumb.bind("ready", function () {
         dropOptions: exampleDropOptions
     };
 
-    var e1 = instance.addEndpoint('Table1', {anchor: [0.5, 1, 0, 1]}, exampleEndpoint2);
+    //var e1 = instance.addEndpoint('Table1', {anchor: [0.5, 1, 0, 1]}, exampleEndpoint2);
 
-    instance.draggable(jsPlumb.getSelector(".table-node"));
+    setDraggable();
 });
+
+function setDraggable() {
+    instance.draggable(jsPlumb.getSelector(".table-node"));
+}

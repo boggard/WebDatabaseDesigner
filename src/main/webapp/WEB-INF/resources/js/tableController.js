@@ -1,6 +1,9 @@
-app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', function (modalInstance, scope, sce) {
+app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'tables',
+    function (modalInstance, scope, sce, tables) {
 
         var self = this;
+
+        self.tables = tables;
 
         self.table  = {
             name: 'Table',
@@ -38,9 +41,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', functi
         if (field.foreignKey) {
             self.table.foreignKeys.push(
                 {
-                    fieldName: field.name,
-                    tableName: '',
-                    foreignField: ''
+                    fieldName: field.name
                 }
             )
         } else {

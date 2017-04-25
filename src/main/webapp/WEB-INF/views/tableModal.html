@@ -11,8 +11,8 @@
                     <th>Поле</th>
                     <th>Тип</th>
                     <th></th>
-                    <th>Первичный ключ</th>
-                    <th>Внешний ключ</th>
+                    <th>ПК</th>
+                    <th>ВК</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,10 +46,12 @@
                 <tr ng-repeat="key in tableCtrl.table.foreignKeys">
                     <td ng-bind="key.fieldName"></td>
                     <td>
-                        <select></select>
+                        <select ng-options="table as table.name for table in tableCtrl.tables track by table"
+                                ng-model="key.table"></select>
                     </td>
                     <td>
-                        <select></select>
+                        <select ng-options="field as field.name for field in key.table.fields track by field.name"
+                                ng-model="key.foreignField"></select>
                     </td>
                 </tr>
                 </tbody>

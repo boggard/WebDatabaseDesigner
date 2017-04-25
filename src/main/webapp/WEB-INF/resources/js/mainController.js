@@ -9,7 +9,12 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
                 ariaDescribedBy: 'modal-body',
                 templateUrl: 'tableModal',
                 controller: 'tableController',
-                controllerAs: 'tableCtrl'
+                controllerAs: 'tableCtrl',
+                resolve: {
+                    tables: function () {
+                        return self.tables;
+                    }
+                }
             }).result.then(function (table) {
                 self.tables.push(table);
                 timeout(function () {

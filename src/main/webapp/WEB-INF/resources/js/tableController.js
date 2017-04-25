@@ -4,7 +4,8 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', functi
 
         self.table  = {
             name: 'Table',
-            fields: []
+            fields: [],
+            foreignKeys: []
         };
 
         self.addField  = function () {
@@ -12,7 +13,8 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', functi
                 {
                     name: 'field',
                     type: 'BIGINT',
-                    primaryKey: false
+                    primaryKey: false,
+                    foreignKey: false
                 }
             );
         };
@@ -31,6 +33,26 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', functi
         self.addTable = function () {
             modalInstance.close(self.table);
         };
+
+    self.actionForeignKey = function (field) {
+        if (field.foreignKey) {
+            self.table.foreignKeys.push(
+                {
+                    fieldName: field.name,
+                    tableName: '',
+                    foreignField: ''
+                }
+            )
+        } else {
+            var elem = self.table.foreignKeys.find(function (element, index, array) {
+                return element.fieldName === field.name;
+            });
+            var index = self.table.foreignKeys.indexOf(elem);
+            if (index !== -1) {
+                self.table.foreignKeys.splice(index, 1);
+            }
+        }
+    };
 
         return self;
     }]);

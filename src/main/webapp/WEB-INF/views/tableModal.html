@@ -12,6 +12,7 @@
                     <th>Тип</th>
                     <th></th>
                     <th>Первичный ключ</th>
+                    <th>Внешний ключ</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,10 +25,35 @@
                     <td>
                         <input type="checkbox" ng-model="field.primaryKey">
                     </td>
+                    <td>
+                        <input type="checkbox" ng-change="tableCtrl.actionForeignKey(field)"
+                               ng-model="field.foreignKey">
+                    </td>
                 </tr>
                 </tbody>
             </table>
             <button ng-click="tableCtrl.addField()">Добавить</button>
+            <table ng-if="tableCtrl.table.foreignKeys.length > 0" st-table="tableCtrl.table.foreignKeys"
+                   class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Внешний ключ</th>
+                    <th>Таблица</th>
+                    <th>Поле</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="key in tableCtrl.table.foreignKeys">
+                    <td ng-bind="key.fieldName"></td>
+                    <td>
+                        <select></select>
+                    </td>
+                    <td>
+                        <select></select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="modal-footer">
             <button ng-click="tableCtrl.addTable()">Добавить</button>

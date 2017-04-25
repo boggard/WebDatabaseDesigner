@@ -11,7 +11,8 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', functi
             self.table.fields.push(
                 {
                     name: 'field',
-                    type: 'BIGINT'
+                    type: 'BIGINT',
+                    primaryKey: false
                 }
             );
         };

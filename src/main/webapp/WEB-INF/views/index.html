@@ -47,7 +47,7 @@
                     <table class="table table-bordered">
                         <tbody>
                         <tr ng-repeat="field in table.fields">
-                            <td>{{field.name}}</td>
+                            <td><span ng-if="field.primaryKey">🔑</span>{{field.name}}</td>
                             <td>{{field.type}}</td>
                         </tr>
                         </tbody>

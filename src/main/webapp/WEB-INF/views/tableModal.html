@@ -10,6 +10,8 @@
                 <tr>
                     <th>Поле</th>
                     <th>Тип</th>
+                    <th></th>
+                    <th>Первичный ключ</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,6 +20,9 @@
                     <td contenteditable ng-model="field.type"></td>
                     <td>
                         <button ng-click="tableCtrl.removeField(field)">Удалить</button>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="field.primaryKey">
                     </td>
                 </tr>
                 </tbody>

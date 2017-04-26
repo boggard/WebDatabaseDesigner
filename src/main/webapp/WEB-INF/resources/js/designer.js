@@ -51,17 +51,20 @@ jsPlumb.bind("ready", function () {
      jsPlumb.connect({ source:e0, anchor:dynamicAnchors, target:e1});*/
 
     instance = jsPlumb.getInstance({
-        DragOptions: {cursor: 'pointer', zIndex: 2000},
-        PaintStyle: {stroke: '#666'},
-        EndpointHoverStyle: {fill: "orange"},
-        HoverPaintStyle: {stroke: "orange"},
-        EndpointStyle: {width: 20, height: 16, stroke: '#666'},
-        Endpoint: "Rectangle",
-        Anchors: ["TopCenter", "TopCenter"],
-        Container: "canvas"
+        Container: "network"
     });
 
-    var exampleDropOptions = {
+
+    setDraggable();
+});
+
+function setDraggable() {
+    instance.draggable(jsPlumb.getSelector(".table-node"));
+}
+
+function addConnection() {
+
+    /*var exampleDropOptions = {
         tolerance: "touch",
         hoverClass: "dropHover",
         activeClass: "dragActive"
@@ -79,13 +82,9 @@ jsPlumb.bind("ready", function () {
         maxConnections: 3,
         isTarget: true,
         dropOptions: exampleDropOptions
-    };
+     };*/
 
-    //var e1 = instance.addEndpoint('Table1', {anchor: [0.5, 1, 0, 1]}, exampleEndpoint2);
-
-    setDraggable();
-});
-
-function setDraggable() {
-    instance.draggable(jsPlumb.getSelector(".table-node"));
+    //instance.connect({source:"Table",  anchor:"Left", target:"Table1"});
+    instance.connect({source: "Table-id", anchor: "Left", target: "Table1-id"});
+    //var e1 = instance.connect('Table-id', {anchor:[ 0.5, 1, 0, 1, 0, 50 ]}, 'Table1-id');
 }

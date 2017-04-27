@@ -36,7 +36,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
         self.addTable = function () {
             var valid = true;
             self.table.fields.forEach(function (item, i, arr) {
-                if (!self.checkFieldValid(item)) {
+                if (!self.checkFieldValid(item, close)) {
                     valid = false;
                 }
             });
@@ -54,7 +54,9 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 }
                 self.table.foreignKeys.push(
                     {
-                        fieldName: field.name
+                        fieldName: field.name,
+                        table: tables[0],
+                        foreignField: tables[0].fields[0].name
                     }
                 )
             } else {
@@ -68,7 +70,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
             }
         };
 
-        self.checkFieldValid = function (field) {
+        self.checkFieldValid = function (field, close) {
             if (!field.name.trim()) {
                 self.errorMessage = "Имя поля таблицы не должно быть пустым";
                 return false;
@@ -77,9 +79,30 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 self.errorMessage = "Тип поля таблицы не должен быть пустым";
                 return false;
             }
+            if (self.table.fields.find(function (elem, i, arr) {
+                    return elem.name === field.name && elem !== field;
+                })) {
+                self.errorMessage = "Поле с таким именем уже существует";
+                return false;
+            }
+            if (tables.length === 0 && !close) {
+                self.errorMessage = "Нет других таблиц для добавления внешнего ключа";
+                return false;
+            }
+            if (!self.table.name.trim() && close) {
+                self.errorMessage = "Имя таблицы не должно быть пустым";
+                return false;
+            }
+            if (self.tables.find(function (elem, i, arr) {
+                    return elem.name === self.table.name;
+                })) {
+                self.errorMessage = "Таблица с таким именем уже существует";
+                return false;
+            }
             self.errorMessage = null;
             return true;
         };
+
 
         return self;
     }]);

@@ -19,7 +19,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
                 self.tables.push(table);
                 timeout(function () {
                     setDraggable();
-                    addConnection();
+                    addConnections(table);
                 }, 500);
             }).catch(function (res) {
                 if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {

@@ -46,12 +46,14 @@
                 <tr ng-repeat="key in tableCtrl.table.foreignKeys">
                     <td ng-bind="key.fieldName"></td>
                     <td>
-                        <select ng-options="table as table.name for table in tableCtrl.tables track by table"
-                                ng-model="key.table"></select>
+                        <select ng-model="key.table">
+                            <option ng-repeat="table in tableCtrl.tables" ng-value="table">{{table.name}}</option>
+                        </select>
                     </td>
                     <td>
-                        <select ng-options="field as field.name for field in key.table.fields track by field.name"
-                                ng-model="key.foreignField"></select>
+                        <select ng-model="key.foreignField">
+                            <option ng-repeat="key in key.table.fields" ng-value="key.name">{{key.name}}</option>
+                        </select>
                     </td>
                 </tr>
                 </tbody>

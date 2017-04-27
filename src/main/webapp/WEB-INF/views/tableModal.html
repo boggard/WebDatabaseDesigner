@@ -17,8 +17,12 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="field in tableCtrl.table.fields">
-                    <td contenteditable ng-model="field.name"></td>
-                    <td contenteditable ng-model="field.type"></td>
+                    <td>
+                        <input type="text" ng-model="field.name">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="field.type">
+                    </td>
                     <td>
                         <button ng-click="tableCtrl.removeField(field)">Удалить</button>
                     </td>
@@ -32,6 +36,7 @@
                 </tr>
                 </tbody>
             </table>
+            <div id="error" ng-if="tableCtrl.errorMessage">{{tableCtrl.errorMessage}}</div>
             <button ng-click="tableCtrl.addField()">Добавить</button>
             <table ng-if="tableCtrl.table.foreignKeys.length > 0" st-table="tableCtrl.table.foreignKeys"
                    class="table table-striped">

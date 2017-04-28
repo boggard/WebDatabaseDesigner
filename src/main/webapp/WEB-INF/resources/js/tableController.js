@@ -52,13 +52,22 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                     field.foreignKey = false;
                     return;
                 }
-                self.table.foreignKeys.push(
-                    {
-                        fieldName: field.name,
-                        table: tables[0],
-                        foreignField: tables[0].fields[0].name
+                tables.some(function (elem) {
+                    if (elem.fields.length > 0) {
+                        self.table.foreignKeys.push(
+                            {
+                                fieldName: field.name,
+                                table: elem,
+                                foreignField: elem.fields[0].name
+                            }
+                        );
+                        return true;
                     }
-                )
+                });
+                if (self.table.foreignKeys.length === 0) {
+                    field.foreignKey = false;
+                    self.errorMessage = "Нет внешних полей для связи";
+                }
             } else {
                 var elem = self.table.foreignKeys.find(function (element, index, array) {
                     return element.fieldName === field.name;
@@ -95,7 +104,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
             }
             if (self.tables.find(function (elem, i, arr) {
                     return elem.name === self.table.name;
-                })) {
+                }) && close) {
                 self.errorMessage = "Таблица с таким именем уже существует";
                 return false;
             }

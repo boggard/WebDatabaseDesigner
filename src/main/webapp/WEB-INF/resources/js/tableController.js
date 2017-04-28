@@ -1,15 +1,21 @@
-app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'tables',
-    function (modalInstance, scope, sce, tables) {
+app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'tables', 'editTable',
+    function (modalInstance, scope, sce, tables, editTable) {
 
         var self = this;
 
         self.tables = tables;
 
-        self.table = {
-            name: 'Table',
-            fields: [],
-            foreignKeys: []
-        };
+        if (editTable !== undefined) {
+            self.table = editTable;
+            self.mainBtn = "Изменить";
+        } else {
+            self.table = {
+                name: 'Table',
+                fields: [],
+                foreignKeys: []
+            };
+            self.mainBtn = "Добавить";
+        }
 
         self.addField = function () {
             self.table.fields.push(
@@ -40,7 +46,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                     valid = false;
                 }
             });
-            if (!valid) {
+            if (!valid || !self.checkTableValid()) {
                 return;
             }
             modalInstance.close(self.table);
@@ -94,24 +100,30 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 self.errorMessage = "Поле с таким именем уже существует";
                 return false;
             }
-            if (tables.length === 0 && !close) {
+            if (tables.filter(function (elem, i, attr) {
+                    return elem !== self.table;
+                }).length === 0 && !close) {
                 self.errorMessage = "Нет других таблиц для добавления внешнего ключа";
-                return false;
-            }
-            if (!self.table.name.trim() && close) {
-                self.errorMessage = "Имя таблицы не должно быть пустым";
-                return false;
-            }
-            if (self.tables.find(function (elem, i, arr) {
-                    return elem.name === self.table.name;
-                }) && close) {
-                self.errorMessage = "Таблица с таким именем уже существует";
                 return false;
             }
             self.errorMessage = null;
             return true;
         };
 
+        self.checkTableValid = function () {
+            if (!self.table.name.trim()) {
+                self.errorMessage = "Имя таблицы не должно быть пустым";
+                return false;
+            }
+            if (self.tables.find(function (elem, i, arr) {
+                    return elem.name === self.table.name && elem !== self.table;
+                })) {
+                self.errorMessage = "Таблица с таким именем уже существует";
+                return false;
+            }
+            self.errorMessage = null;
+            return true;
+        };
 
         return self;
     }]);

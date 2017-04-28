@@ -2,8 +2,8 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
         var self = this;
     self.tables = [];
 
-        self.addTable = function () {
-            var modalInstance = uibModal.open({
+    self.addTable = function (editTable) {
+        uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -13,10 +13,17 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
                 resolve: {
                     tables: function () {
                         return self.tables;
+                    },
+                    editTable: function () {
+                        return editTable;
                     }
                 }
             }).result.then(function (table) {
+            if (!editTable) {
                 self.tables.push(table);
+            } else {
+                editTable = table;
+            }
                 timeout(function () {
                     setDraggable();
                     addConnections(table);

@@ -39,7 +39,7 @@
     <button ng-click="mainCtrl.addTable()">Добавить таблицу</button>
     <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
         <div ng-repeat="table in mainCtrl.tables">
-            <div class="table-node" ng-attr-id="{{table.name}}">
+            <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)">
                 <div class="table-caption">
                     {{table.name}}
                 </div>

@@ -80,6 +80,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 });
                 var index = self.table.foreignKeys.indexOf(elem);
                 if (index !== -1) {
+                    removeConnection(self.table, self.table.foreignKeys[index]);
                     self.table.foreignKeys.splice(index, 1);
                 }
             }

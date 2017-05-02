@@ -49,6 +49,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
             if (!valid || !self.checkTableValid()) {
                 return;
             }
+            // delete self.table.editTable;
             modalInstance.close(self.table);
         };
 
@@ -102,7 +103,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 return false;
             }
             if (tables.filter(function (elem, i, attr) {
-                    return elem !== self.table;
+                    return elem !== self.table/*.editTable*/;
                 }).length === 0 && !close) {
                 self.errorMessage = "Нет других таблиц для добавления внешнего ключа";
                 return false;
@@ -117,7 +118,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 return false;
             }
             if (self.tables.find(function (elem, i, arr) {
-                    return elem.name === self.table.name && elem !== self.table;
+                    return elem.name === self.table.name && elem !== self.table/*.editTable*/;
                 })) {
                 self.errorMessage = "Таблица с таким именем уже существует";
                 return false;

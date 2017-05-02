@@ -1,4 +1,5 @@
-app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', function (uibModal, scope, sce, timeout) {
+app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'mainService',
+    function (uibModal, scope, sce, timeout, mainService) {
     var self = this;
     self.tables = [];
 
@@ -15,15 +16,21 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
                     return self.tables;
                 },
                 editTable: function () {
+                    /*if(editTable !== undefined) {
+                     var clone = cloneObject(editTable);
+                     clone.editTable = editTable;
+                     return clone;
+                     }*/
                     return editTable;
                 }
             }
         }).result.then(function (table) {
-            if (!editTable) {
+            if (editTable === undefined) {
                 self.tables.push(table);
-            } else {
-                editTable = table;
             }
+            /* else {
+             Object.assign(editTable,table)
+             }*/
             timeout(function () {
                 setDraggable();
                 addConnections(table);
@@ -34,4 +41,27 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', fun
             }
         });
     };
+
+        self.getSql = function () {
+            mainService.getSql(self.tables)
+                .then(function (sql) {
+                    alert(sql);
+                })
+        }
 }]);
+
+function cloneObject(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+
+    var temp = obj.constructor(); // give temp the original obj's constructor
+    for (var key in obj) {
+        if (key === 'connection') {
+            continue;
+        }
+        temp[key] = cloneObject(obj[key]);
+    }
+
+    return temp;
+}

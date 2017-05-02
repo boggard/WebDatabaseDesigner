@@ -15,6 +15,7 @@
     <link th:href="@{css/designer.css}" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" th:src="@{js/app.js}"></script>
+    <script type="text/javascript" th:src="@{js/mainService.js}"></script>
     <script type="text/javascript" th:src="@{js/mainController.js}"></script>
     <script type="text/javascript" th:src="@{js/tableController.js}"></script>
     <script type="text/javascript" th:src="@{js/contenteditableDirective.js}"></script>
@@ -37,6 +38,7 @@
         <div th:insert="tableModal"></div>
     </script>
     <button ng-click="mainCtrl.addTable()">Добавить таблицу</button>
+    <button ng-click="mainCtrl.getSql()">Сгенерировать SQL</button>
     <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
         <div ng-repeat="table in mainCtrl.tables">
             <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)">

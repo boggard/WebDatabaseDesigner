@@ -15,7 +15,7 @@ import javax.validation.Validator;
  */
 
 @Configuration
-@ComponentScan(basePackages = {"controller"})
+@ComponentScan(basePackages = {"controller", "service"})
 @Import({WebConfig.class})
 @EnableWebMvc
 public class AppConfig {

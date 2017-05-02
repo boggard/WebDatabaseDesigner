@@ -44,8 +44,10 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
 
         self.getSql = function () {
             mainService.getSql(self.tables)
-                .then(function (sql) {
-                    alert(sql);
+                .then(function (response) {
+                    alert(response.data);
+                }, function (error) {
+                    alert("asd");
                 })
         }
 }]);

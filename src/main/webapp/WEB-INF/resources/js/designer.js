@@ -32,7 +32,7 @@ function addConnections(table) {
             target: item.table.name + "-" + item.foreignField
         })
     });
-};
+}
 
 function removeConnection(table, foreignKey) {
     /*var connection = connections.find(function (item, i, arr) {

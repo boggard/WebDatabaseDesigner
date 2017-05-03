@@ -13,6 +13,7 @@
                     <th></th>
                     <th>ПК</th>
                     <th>ВК</th>
+                    <th>НН</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,9 @@
                     <td>
                         <input type="checkbox" ng-change="tableCtrl.actionForeignKey(field)"
                                ng-model="field.foreignKey">
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="field.notNull">
                     </td>
                 </tr>
                 </tbody>

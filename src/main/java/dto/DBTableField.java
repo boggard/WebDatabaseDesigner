@@ -9,6 +9,7 @@ public class DBTableField {
     private String type;
     private boolean primaryKey;
     private boolean foreignKey;
+    private boolean notNull;
 
     public String getName() {
         return name;
@@ -40,5 +41,13 @@ public class DBTableField {
 
     public void setForeignKey(boolean foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    public boolean isNotNull() {
+        return notNull;
+    }
+
+    public void setNotNull(boolean notNull) {
+        this.notNull = notNull;
     }
 }

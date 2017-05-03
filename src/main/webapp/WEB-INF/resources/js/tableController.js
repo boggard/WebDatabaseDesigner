@@ -23,7 +23,8 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                     name: '',
                     type: '',
                     primaryKey: false,
-                    foreignKey: false
+                    foreignKey: false,
+                    notNull: false
                 }
             );
         };

@@ -13,22 +13,24 @@ import java.util.List;
 @Service
 public class SqlServiceImpl implements SqlService {
     @Override
-    public StringBuilder generateSql(List<DBTable> dbTables) {
+    public byte[] generateSql(List<DBTable> dbTables) {
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder primaryKey = new StringBuilder();
         for (DBTable dbTable : dbTables) {
-            stringBuilder.append("CREATE TABLE ").append(dbTable.getName()).append(" (");
+            stringBuilder.append("CREATE TABLE ").append(dbTable.getName()).append(" (\n");
             for (DBTableField field : dbTable.getFields()) {
-                stringBuilder.append(field.getName()).append(" ").append(field.getType()).append(",");
+                stringBuilder.append("\t").append(field.getName()).append(" ").append(field.getType()).append(",\n");
                 if (field.isPrimaryKey()) {
                     primaryKey.append(field.getName()).append(",");
                 }
             }
-            stringBuilder.append("PRIMARY KEY (")
-                    .append(primaryKey.deleteCharAt(primaryKey.lastIndexOf(",")))
-                    .append(")");
+            int index = primaryKey.lastIndexOf(",");
+
+            stringBuilder.append("\tPRIMARY KEY (")
+                    .append(index != -1 ? primaryKey.deleteCharAt(index) : primaryKey)
+                    .append(")\n");
             stringBuilder.append(")");
         }
-        return stringBuilder;
+        return stringBuilder.toString().getBytes();
     }
 }

@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface SqlService {
 
-    StringBuilder generateSql(List<DBTable> dbTables);
+    byte[] generateSql(List<DBTable> dbTables);
 }

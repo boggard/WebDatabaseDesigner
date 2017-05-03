@@ -6,8 +6,7 @@ angular
                 return $http({
                     method: 'POST',
                     url: "/generate_sql",
-                    data: JSON.stringify(tables),
-                    headers: {'Content-Type': 'application/json'}
+                    data: tables
                 })
             }
         }

@@ -17,21 +17,31 @@ function setDraggable() {
 
 function addConnections(table) {
     table.foreignKeys.forEach(function (item, i, arr) {
-        /* var connection = {
-            name: table.name + "-" + item.fieldName + "/" + item.table.name + "-" + item.foreignField,
-            connection: instance.connect({
-                source: table.name + "-" + item.fieldName,
-                anchor: "Left",
-                target: item.table.name + "-" + item.foreignField
-            })
-        };
-         connections.push(connection);*/
         item.connection = instance.connect({
-            source: table.name + "-" + item.fieldName,
+            source: table.name + "-" + item.field.name,
             anchor: "Left",
-            target: item.table.name + "-" + item.foreignField
+            target: item.table.name + "-" + item.foreignField.name
         })
     });
+}
+
+function addFkConnections(table, foreignKeys) {
+    foreignKeys.forEach(function (item, i, arr) {
+        item.connection = instance.connect({
+            source: table.name + "-" + item.field.name,
+            anchor: "Left",
+            target: item.table.name + "-" + item.foreignField.name
+        })
+    });
+}
+
+
+function addConnection(table, foreignKey) {
+    foreignKey.connection = instance.connect({
+        source: table.name + "-" + foreignKey.fieldName,
+        anchor: "Left",
+        target: foreignKey.table.name + "-" + foreignKey.foreignField
+    })
 }
 
 function removeConnection(table, foreignKey) {

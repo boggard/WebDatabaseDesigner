@@ -3,11 +3,12 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
 
         var self = this;
 
-        self.tables = tables;
+        self.tables = [].concat(tables);
 
         if (editTable !== undefined) {
             self.table = editTable;
             self.mainBtn = "Изменить";
+            self.tables.splice(self.tables.indexOf(editTable), 1);
         } else {
             self.table = {
                 name: 'Table',
@@ -50,7 +51,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
             if (!valid || !self.checkTableValid()) {
                 return;
             }
-            // delete self.table.editTable;
+            delete self.table.editTable;
             modalInstance.close(self.table);
         };
 
@@ -64,9 +65,9 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                     if (elem.fields.length > 0) {
                         self.table.foreignKeys.push(
                             {
-                                fieldName: field.name,
+                                field: field,
                                 table: elem,
-                                foreignField: elem.fields[0].name
+                                foreignField: elem.fields[0]
                             }
                         );
                         return true;
@@ -78,11 +79,11 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 }
             } else {
                 var elem = self.table.foreignKeys.find(function (element, index, array) {
-                    return element.fieldName === field.name;
+                    return element.field === field;
                 });
                 var index = self.table.foreignKeys.indexOf(elem);
                 if (index !== -1) {
-                    removeConnection(self.table, self.table.foreignKeys[index]);
+                    // removeConnection(self.table, self.table.foreignKeys[index]);
                     self.table.foreignKeys.splice(index, 1);
                 }
             }
@@ -103,8 +104,8 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 self.errorMessage = "Поле с таким именем уже существует";
                 return false;
             }
-            if (tables.filter(function (elem, i, attr) {
-                    return elem !== self.table/*.editTable*/;
+            if (self.tables.filter(function (elem, i, attr) {
+                    return elem !== self.table /*&& elem !== self.table.editTable*/;
                 }).length === 0 && !close) {
                 self.errorMessage = "Нет других таблиц для добавления внешнего ключа";
                 return false;
@@ -119,7 +120,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 return false;
             }
             if (self.tables.find(function (elem, i, arr) {
-                    return elem.name === self.table.name && elem !== self.table/*.editTable*/;
+                    return elem.name === self.table.name /*&& elem !== self.table.editTable*/;
                 })) {
                 self.errorMessage = "Таблица с таким именем уже существует";
                 return false;

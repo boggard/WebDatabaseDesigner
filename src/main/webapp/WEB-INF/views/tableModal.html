@@ -53,17 +53,16 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="key in tableCtrl.table.foreignKeys">
-                    <td ng-bind="key.fieldName"></td>
+                    <td ng-bind="key.field.name"></td>
                     <td>
                         <select ng-model="key.table">
-                            <option ng-repeat="table in tableCtrl.tables" ng-value="table"
-                                    ng-if="table != tableCtrl.table">{{table.name}}
+                            <option ng-repeat="table in tableCtrl.tables" ng-value="table">{{table.name}}
                             </option>
                         </select>
                     </td>
                     <td>
                         <select ng-model="key.foreignField">
-                            <option ng-repeat="key in key.table.fields" ng-value="key.name">{{key.name}}</option>
+                            <option ng-repeat="key in key.table.fields" ng-value="key">{{key.name}}</option>
                         </select>
                     </td>
                 </tr>

@@ -7,7 +7,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
 
         if (editTable !== undefined) {
             self.table = editTable;
-            self.mainBtn = "Изменить";
+            self.changing = true;
             self.tables.splice(self.tables.indexOf(editTable), 1);
         } else {
             self.table = {
@@ -51,7 +51,6 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
             if (!valid || !self.checkTableValid()) {
                 return;
             }
-            delete self.table.editTable;
             modalInstance.close(self.table);
         };
 
@@ -61,7 +60,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                     field.foreignKey = false;
                     return;
                 }
-                tables.some(function (elem) {
+                self.tables.some(function (elem) {
                     if (elem.fields.length > 0) {
                         self.table.foreignKeys.push(
                             {
@@ -83,7 +82,7 @@ app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'table
                 });
                 var index = self.table.foreignKeys.indexOf(elem);
                 if (index !== -1) {
-                    // removeConnection(self.table, self.table.foreignKeys[index]);
+                    removeConnection(self.table, self.table.foreignKeys[index]);
                     self.table.foreignKeys.splice(index, 1);
                 }
             }

@@ -37,7 +37,7 @@ public class SqlServiceImpl implements SqlService {
                         .append("),\n");
             }
             for (DBForeignKey foreignKey : dbTable.getForeignKeys()) {
-                stringBuilder.append("\tFOREIGN KEY (").append(foreignKey.getFieldName()).append(") ").append("REFERENCES ").append(foreignKey.getTable().getName()).append(" (").append(foreignKey.getForeignField()).append("),\n");
+                stringBuilder.append("\tFOREIGN KEY (").append(foreignKey.getField().getName()).append(") ").append("REFERENCES ").append(foreignKey.getTable().getName()).append(" (").append(foreignKey.getForeignField().getName()).append("),\n");
             }
             stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
             stringBuilder.append(");\n");

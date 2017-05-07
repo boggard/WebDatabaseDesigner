@@ -5,17 +5,9 @@ package dto;
  */
 public class DBForeignKey {
 
-    private String fieldName;
+    private DBTableField field;
     private DBTable table;
-    private String foreignField;
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
+    private DBTableField foreignField;
 
     public DBTable getTable() {
         return table;
@@ -25,11 +17,19 @@ public class DBForeignKey {
         this.table = table;
     }
 
-    public String getForeignField() {
+    public DBTableField getForeignField() {
         return foreignField;
     }
 
-    public void setForeignField(String foreignField) {
+    public void setForeignField(DBTableField foreignField) {
         this.foreignField = foreignField;
+    }
+
+    public DBTableField getField() {
+        return field;
+    }
+
+    public void setField(DBTableField field) {
+        this.field = field;
     }
 }

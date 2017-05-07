@@ -1,5 +1,5 @@
-app.controller('tableController', ['$uibModalInstance', '$scope', '$sce', 'tables', 'editTable',
-    function (modalInstance, scope, sce, tables, editTable) {
+app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tables', 'editTable',
+    function (modalInstance, timeout, sce, tables, editTable) {
 
         var self = this;
 

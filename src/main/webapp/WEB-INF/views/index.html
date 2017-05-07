@@ -11,9 +11,18 @@
     <script type="text/javascript" th:src="@{js/libs/ui-bootstrap-tpls-2.5.0.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/smart-table.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/FileSaver.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/libs/jquery-3.2.1.js}"></script>
+    <script type="text/javascript" th:src="@{js/libs/material.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/libs/ripples.js}"></script>
+
     <link th:href="@{css/libs/jsPlumbToolkit-defaults.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/libs/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link th:href="@{css/libs/bootstrap-material-design.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/libs/ripples.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/designer.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/wdd.css}" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" th:src="@{js/app.js}"></script>
     <script type="text/javascript" th:src="@{js/mainService.js}"></script>
@@ -38,25 +47,31 @@
     <script type="text/ng-template" id="tableModal">
         <div th:insert="tableModal"></div>
     </script>
-    <button ng-click="mainCtrl.addTable()">Добавить таблицу</button>
-    <button ng-click="mainCtrl.getSql()">Сгенерировать SQL</button>
-    <div id="network" class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
-        <div ng-repeat="table in mainCtrl.tables">
-            <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)">
-                <div class="table-caption">
-                    {{table.name}}
-                </div>
-                <div class="table-fields">
-                    <table class="table table-bordered">
-                        <tbody>
-                        <tr ng-repeat="field in table.fields" ng-attr-id="{{table.name}}-{{field.name}}" class="field">
-                            <td>
-                                <span ng-if="field.primaryKey">🔑</span>{{field.name}}
-                            </td>
-                            <td>{{field.type}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <div class="col-sm-12 btn-div-wdd">
+            <a ng-click="mainCtrl.addTable()" class="btn btn-primary btn-fab btn-wdd"><i
+                    class="material-icons">add</i></a>
+            <a ng-click="mainCtrl.getSql()" class="btn btn-primary btn-fab btn-wdd"><i class="material-icons">file_download</i></a>
+        </div>
+        <div id="network" class="col-sm-12 jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
+            <div ng-repeat="table in mainCtrl.tables">
+                <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)">
+                    <div class="table-caption">
+                        {{table.name}}
+                    </div>
+                    <div class="table-fields">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr ng-repeat="field in table.fields" ng-attr-id="{{table.name}}-{{field.name}}"
+                                class="field">
+                                <td>
+                                    <span ng-if="field.primaryKey">🔑</span>{{field.name}}
+                                </td>
+                                <td>{{field.type}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

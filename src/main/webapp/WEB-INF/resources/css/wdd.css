@@ -1,0 +1,29 @@
+.btn-div-wdd {
+    text-align: center;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.btn-wdd {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.modal-title {
+    padding-left: 0 !important;
+    margin: 2.2% 0 0;
+}
+
+.input-col-wdd {
+    padding-left: 0 !important;
+}
+
+.checkbox {
+    margin-top: 8px !important;
+}
+
+.field-wdd {
+    margin: 15px 0 0 0 !important;
+}

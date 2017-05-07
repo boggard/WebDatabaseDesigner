@@ -1,45 +1,54 @@
 <html>
-<div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Добавление таблицы:<input ng-model="tableCtrl.table.name"></h3>
+<div class="modal-header form-group">
+    <h3 class="col-sm-6 modal-title">Добавление таблицы</h3>
+    <div class="col-sm-6 input-col-wdd">
+        <input type="text" class="form-control" id="table-name-input" ng-model="tableCtrl.table.name">
+    </div>
 </div>
 <div class="ph-container">
     <div class="ph-content">
         <div class="modal-body">
-            <table st-table="tableCtrl.table.fields" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Поле</th>
-                    <th>Тип</th>
-                    <th></th>
-                    <th>ПК</th>
-                    <th>ВК</th>
-                    <th>НН</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="field in tableCtrl.table.fields">
-                    <td>
-                        <input type="text" ng-model="field.name">
-                    </td>
-                    <td>
-                        <input type="text" ng-model="field.type">
-                    </td>
-                    <td>
-                        <button ng-click="tableCtrl.removeField(field)">Удалить</button>
-                    </td>
-                    <td>
-                        <input type="checkbox" ng-model="field.primaryKey">
-                    </td>
-                    <td>
-                        <input type="checkbox" ng-change="tableCtrl.actionForeignKey(field)"
-                               ng-model="field.foreignKey">
-                    </td>
-                    <td>
-                        <input type="checkbox" ng-model="field.notNull">
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div ng-repeat="field in tableCtrl.table.fields">
+                <div class="col-sm-12 input-col-wdd">
+                    <div class="form-group label-floating col-sm-3 input-col-wdd is-empty field-wdd">
+                        <label class="control-label" for="focusedInput1">Поле</label>
+                        <input class="form-control" id="focusedInput1" type="text" ng-model="field.name">
+                    </div>
+                    <div class="form-group label-floating col-sm-3 input-col-wdd is-empty field-wdd">
+                        <label class="control-label" for="focusedInput2">Тип</label>
+                        <input class="form-control" id="focusedInput2" type="text" ng-model="field.type">
+                    </div>
+                    <div class="checkbox col-sm-1">
+                        <label>ПК<br>
+                            <input type="checkbox" ng-model="field.primaryKey">
+                            <span class="checkbox-material"><span class="check"></span></span>
+                        </label>
+                    </div>
+                    <div class="checkbox col-sm-1">
+                        <label>ВК<br>
+                            <input type="checkbox" ng-model="field.foreignKey"
+                                   ng-change="tableCtrl.actionForeignKey(field)">
+                            <span class="checkbox-material"><span class="check"></span></span>
+                        </label>
+                    </div>
+                    <div class="checkbox col-sm-1">
+                        <label>НН<br>
+                            <input type="checkbox" ng-model="field.notNull">
+                            <span class="checkbox-material"><span class="check"></span></span>
+                        </label>
+                    </div>
+                    <div class="checkbox col-sm-1">
+                        <label>У<br>
+                            <input type="checkbox" ng-model="field.unique">
+                            <span class="checkbox-material"><span class="check"></span></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <a ng-click="tableCtrl.removeField(field)" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+                                class="material-icons">remove</i></a>
+                    </div>
+                </div>
+            </div>
             <div id="error" ng-if="tableCtrl.errorMessage">{{tableCtrl.errorMessage}}</div>
             <button ng-click="tableCtrl.addField()">Добавить</button>
             <table ng-if="tableCtrl.table.foreignKeys.length > 0" st-table="tableCtrl.table.foreignKeys"

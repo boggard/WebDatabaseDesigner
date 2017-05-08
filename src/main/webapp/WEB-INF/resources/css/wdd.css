@@ -20,12 +20,20 @@
     padding-left: 0 !important;
 }
 
-.checkbox {
-    margin-top: 8px !important;
+#pk-check {
+    margin-top: 0;
+}
+
+.checkbox + .checkbox, .radio + .radio {
+    margin-top: 0;
+}
+
+.select-wdd {
+    margin-top: 4px !important;
 }
 
 .field-wdd {
-    margin: 15px 0 0 0 !important;
+    margin: 5px 0 0 0 !important;
 }
 
 #table-name-input {
@@ -92,4 +100,11 @@
 
 .error-icon-wdd {
     color: #f44336;
+}
+
+.modal-content .modal-footer {
+    padding-top: 24px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
 }

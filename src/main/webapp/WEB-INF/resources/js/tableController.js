@@ -82,7 +82,9 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
                 });
                 var index = self.table.foreignKeys.indexOf(elem);
                 if (index !== -1) {
-                    removeConnection(self.table, self.table.foreignKeys[index]);
+                    if (self.table.foreignKeys[index].connection !== undefined) {
+                        removeConnection(self.table, self.table.foreignKeys[index]);
+                    }
                     self.table.foreignKeys.splice(index, 1);
                 }
             }

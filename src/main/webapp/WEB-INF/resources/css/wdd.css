@@ -27,3 +27,69 @@
 .field-wdd {
     margin: 15px 0 0 0 !important;
 }
+
+#table-name-input {
+    font-size: 22px;
+}
+
+.row-eq-height-wdd {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.form-group.has-error .help-block, .form-group.is-empty label.control-label {
+    color: #f44336;
+}
+
+.is-empty .control-label {
+    color: #a94442;
+}
+
+.form-group.is-empty .form-control {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.is-empty .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.form-group.is-empty .form-control {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f44336), to(#f44336)),
+    -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient(#f44336, #f44336),
+    -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient(#f44336, #f44336),
+    -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#f44336, #f44336),
+    linear-gradient(#D2D2D2, #D2D2D2);
+    outline: 0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f44336), to(#f44336)),
+    -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient(#f44336, #f44336),
+    -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient(#f44336, #f44336),
+    -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#f44336, #f44336),
+    linear-gradient(#D2D2D2, #D2D2D2);
+    -webkit-background-size: 100% 2px, 100% 1px;
+    background-size: 100% 2px, 100% 1px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition-duration: .3s;
+    -o-transition-duration: .3s;
+    transition-duration: .3s
+}
+
+.error-div {
+    padding-right: 0;
+    text-align: right;
+}
+
+.error-icon-wdd {
+    color: #f44336;
+}

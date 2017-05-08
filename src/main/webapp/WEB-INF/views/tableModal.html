@@ -1,8 +1,11 @@
 <html>
 <div class="modal-header form-group">
     <h3 class="col-sm-6 modal-title">Добавление таблицы</h3>
-    <div class="col-sm-6 input-col-wdd">
+    <div class="col-sm-5 input-col-wdd">
         <input type="text" class="form-control" id="table-name-input" ng-model="tableCtrl.table.name">
+    </div>
+    <div class="col-sm-1 error-div" ng-if="tableCtrl.errorMessage != null">
+        <i class="material-icons error-icon-wdd" ng-attr-title="{{tableCtrl.errorMessage}}">error</i>
     </div>
 </div>
 <div class="ph-container">
@@ -43,14 +46,22 @@
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <a ng-click="tableCtrl.removeField(field)" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
                                 class="material-icons">remove</i></a>
                     </div>
+                    <div class="col-sm-1" id="error-div" ng-if="field.errorMessage != null">
+                        <i class="material-icons error-icon-wdd" ng-attr-title="{{field.errorMessage}}">error</i>
+                    </div>
                 </div>
             </div>
-            <div id="error" ng-if="tableCtrl.errorMessage">{{tableCtrl.errorMessage}}</div>
-            <button ng-click="tableCtrl.addField()">Добавить</button>
+
+            <div class="col-sm-12 input-col-wdd row-eq-height-wdd">
+                <div class="col-sm-2 input-col-wdd">
+                    <a ng-click="tableCtrl.addField()" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+                            class="material-icons">add</i></a>
+                </div>
+            </div>
             <table ng-if="tableCtrl.table.foreignKeys.length > 0" st-table="tableCtrl.table.foreignKeys"
                    class="table table-striped">
                 <thead>

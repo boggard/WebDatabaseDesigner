@@ -90,23 +90,21 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
 
         self.checkFieldValid = function (field, close) {
             if (!field.name.trim()) {
-                self.errorMessage = "Имя поля таблицы не должно быть пустым";
                 return false;
             }
             if (!field.type.trim()) {
-                self.errorMessage = "Тип поля таблицы не должен быть пустым";
                 return false;
             }
             if (self.table.fields.find(function (elem, i, arr) {
                     return elem.name === field.name && elem !== field;
                 })) {
-                self.errorMessage = "Поле с таким именем уже существует";
+                field.errorMessage = "Поле с таким именем уже существует";
                 return false;
             }
             if (self.tables.filter(function (elem, i, attr) {
                     return elem !== self.table /*&& elem !== self.table.editTable*/;
                 }).length === 0 && !close) {
-                self.errorMessage = "Нет других таблиц для добавления внешнего ключа";
+                field.errorMessage = "Нет других таблиц для добавления внешнего ключа";
                 return false;
             }
             self.errorMessage = null;
@@ -115,7 +113,6 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
 
         self.checkTableValid = function () {
             if (!self.table.name.trim()) {
-                self.errorMessage = "Имя таблицы не должно быть пустым";
                 return false;
             }
             if (self.tables.find(function (elem, i, arr) {

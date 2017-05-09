@@ -149,8 +149,9 @@ html, body, .container-fluid {
 }
 
 .modal-content .modal-footer {
-    padding-top: 24px;
-    padding-right: 24px;
-    padding-bottom: 16px;
-    padding-left: 24px;
+    padding: 24px 24px 16px;
+}
+
+.check-label-wdd {
+    margin-left: 3px;
 }

@@ -24,7 +24,10 @@ public class SqlServiceImpl implements SqlService {
                 stringBuilder.append("\t")
                         .append(field.getName()).append(" ")
                         .append(field.getType()).append(" ")
-                        .append(field.isNotNull() ? "NOT NULL" : "").append(",\n");
+                        .append(field.isAutoIncrement() ? "AUTO_INCREMENT" : "").append(" ")
+                        .append(field.isUnique() ? "UNIQUE" : "").append(" ")
+                        .append(field.isNotNull() ? "NOT NULL" : "").append(" ")
+                        .append(field.getDefaultVal() != null ? "DEFAULT '" + field.getDefaultVal() + "'" : "").append(",\n");
                 if (field.isPrimaryKey()) {
                     primaryKey.append(field.getName()).append(",");
                 }

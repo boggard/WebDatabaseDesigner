@@ -7,9 +7,12 @@ public class DBTableField {
 
     private String name;
     private String type;
+    private String defaultVal;
     private boolean primaryKey;
     private boolean foreignKey;
     private boolean notNull;
+    private boolean unique;
+    private boolean autoIncrement;
 
     public String getName() {
         return name;
@@ -49,5 +52,29 @@ public class DBTableField {
 
     public void setNotNull(boolean notNull) {
         this.notNull = notNull;
+    }
+
+    public boolean isUnique() {
+        return unique;
+    }
+
+    public void setUnique(boolean unique) {
+        this.unique = unique;
+    }
+
+    public boolean isAutoIncrement() {
+        return autoIncrement;
+    }
+
+    public void setAutoIncrement(boolean autoIncrement) {
+        this.autoIncrement = autoIncrement;
+    }
+
+    public String getDefaultVal() {
+        return defaultVal;
+    }
+
+    public void setDefaultVal(String defaultVal) {
+        this.defaultVal = defaultVal;
     }
 }

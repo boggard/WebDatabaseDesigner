@@ -44,6 +44,10 @@ html, body, .container-fluid {
     margin-top: 0;
 }
 
+.checkbox {
+    margin-top: 0;
+}
+
 .checkbox + .checkbox, .radio + .radio {
     margin-top: 0;
 }
@@ -103,6 +107,28 @@ html, body, .container-fluid {
     background-image: -o-linear-gradient(#f44336, #f44336),
     -o-linear-gradient(#D2D2D2, #D2D2D2);
     background-image: linear-gradient(#f44336, #f44336),
+    linear-gradient(#D2D2D2, #D2D2D2);
+    -webkit-background-size: 100% 2px, 100% 1px;
+    background-size: 100% 2px, 100% 1px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition-duration: .3s;
+    -o-transition-duration: .3s;
+    transition-duration: .3s
+}
+
+.form-group.is-empty.can-null-wdd label.control-label {
+    color: #009688;
+}
+
+.form-group.is-empty.can-null-wdd .form-control {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)),
+    -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient(#009688, #009688),
+    -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient(#009688, #009688),
+    -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#009688, #009688),
     linear-gradient(#D2D2D2, #D2D2D2);
     -webkit-background-size: 100% 2px, 100% 1px;
     background-size: 100% 2px, 100% 1px;

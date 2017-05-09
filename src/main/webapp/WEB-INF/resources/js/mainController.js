@@ -61,5 +61,10 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
             localStorage.setItem("tables", angular.toJson(clone));
         };
 
+        self.clear = function () {
+            removeAllConnection(self.tables);
+            self.tables = [];
+        };
+
         window.onbeforeunload = self.setToStorage;
     }]);

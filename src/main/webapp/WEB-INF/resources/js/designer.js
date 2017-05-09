@@ -57,8 +57,15 @@ function addConnection(table, foreignKey) {
 }
 
 function removeConnection(table, foreignKey) {
-    /*var connection = connections.find(function (item, i, arr) {
-     return item.name === table.name + "-" + foreignKey.fieldName + "/" + foreignKey.table.name + "-" + foreignKey.foreignField;
-     });*/
     instance.detach(foreignKey.connection);
+}
+
+function removeAllConnection(tables) {
+    tables.forEach(function (table) {
+        table.foreignKeys.forEach(function (item, i, arr) {
+            if (item.connection !== undefined) {
+                instance.detach(item.connection);
+            }
+        })
+    });
 }

@@ -23,7 +23,8 @@
                         <label class="control-label" for="focusedInput2">Тип</label>
                         <input class="form-control" id="focusedInput2" type="text" ng-model="field.type">
                     </div>
-                    <div class="form-group label-floating col-sm-2 input-col-wdd field-wdd is-empty can-null-wdd">
+                    <div ng-class="field.defaultVal.length > 0 ? 'form-group label-floating col-sm-2 input-col-wdd field-wdd'
+                    : 'form-group label-floating col-sm-2 input-col-wdd is-empty can-null-wdd field-wdd'">
                         <label class="control-label" for="focusedInput3">По умолч.</label>
                         <input class="form-control" id="focusedInput3" type="text" ng-model="field.defaultVal">
                     </div>

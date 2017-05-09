@@ -155,3 +155,13 @@ html, body, .container-fluid {
 .check-label-wdd {
     margin-left: 3px;
 }
+
+.info-wdd {
+    font: inherit
+}
+
+.empty-space-wdd {
+    text-align: center;
+    height: 100%;
+    padding-top: 15%
+}

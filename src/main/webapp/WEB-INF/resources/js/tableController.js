@@ -110,6 +110,7 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
                 return false;
             }
             self.errorMessage = null;
+            field.errorMessage = null;
             return true;
         };
 

@@ -25,6 +25,18 @@ function addConnections(table) {
     });
 }
 
+function addAllConnections(tables) {
+    tables.forEach(function (table) {
+        table.foreignKeys.forEach(function (item, i, arr) {
+            item.connection = instance.connect({
+                source: table.name + "-" + item.field.name,
+                anchor: "Left",
+                target: item.table.name + "-" + item.foreignField.name
+            })
+        });
+    })
+}
+
 function addFkConnections(table, foreignKeys) {
     foreignKeys.forEach(function (item, i, arr) {
         item.connection = instance.connect({
@@ -46,7 +58,7 @@ function addConnection(table, foreignKey) {
 
 function removeConnection(table, foreignKey) {
     /*var connection = connections.find(function (item, i, arr) {
-        return item.name === table.name + "-" + foreignKey.fieldName + "/" + foreignKey.table.name + "-" + foreignKey.foreignField;
+     return item.name === table.name + "-" + foreignKey.fieldName + "/" + foreignKey.table.name + "-" + foreignKey.foreignField;
      });*/
     instance.detach(foreignKey.connection);
 }

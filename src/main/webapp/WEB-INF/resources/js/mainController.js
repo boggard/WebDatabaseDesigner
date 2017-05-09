@@ -1,8 +1,12 @@
 app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'mainService',
     function (uibModal, scope, sce, timeout, mainService) {
         var self = this;
-        self.tables = [];
-
+        var localTables = localStorage.getItem("tables");
+        self.tables = localTables !== null ? angular.fromJson(localTables) : [];
+        timeout(function () {
+            setDraggable();
+            addAllConnections(self.tables);
+        }, 10);
         self.addTable = function (editTable) {
             uibModal.open({
                 animation: true,
@@ -26,7 +30,8 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                 timeout(function () {
                     setDraggable();
                     addConnections(table);
-                }, 500);
+                    self.setToStorage();
+                }, 10);
             }).catch(function (res) {
                 if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
                     throw res;
@@ -40,5 +45,21 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                     var blob = new Blob([response.data]);
                     saveAs(blob, "dump.sql");
                 })
-        }
+        };
+
+        self.getPositions = function (target) {
+            target.forEach(function (elem) {
+                var table = angular.element(document.querySelector("#" + elem.name));
+                elem.leftPos = table[0].offsetLeft;
+                elem.topPos = table[0].offsetTop;
+            })
+        };
+
+        self.setToStorage = function () {
+            var clone = cloneObject(self.tables);
+            self.getPositions(clone);
+            localStorage.setItem("tables", angular.toJson(clone));
+        };
+
+        window.onbeforeunload = self.setToStorage;
     }]);

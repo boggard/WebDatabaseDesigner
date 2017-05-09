@@ -24,6 +24,7 @@
     <link th:href="@{css/designer.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/wdd.css}" rel="stylesheet" type="text/css"/>
 
+    <script type="text/javascript" th:src="@{js/utils.js}"></script>
     <script type="text/javascript" th:src="@{js/app.js}"></script>
     <script type="text/javascript" th:src="@{js/mainService.js}"></script>
     <script type="text/javascript" th:src="@{js/mainController.js}"></script>
@@ -55,7 +56,8 @@
         </div>
         <div id="network" class="col-sm-12 jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
             <div ng-repeat="table in mainCtrl.tables">
-                <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)">
+                <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)"
+                     ng-style="{'left' : '{{table.leftPos}}px', 'top' : '{{table.topPos}}px'}">
                     <div class="table-caption">
                         {{table.name}}
                     </div>

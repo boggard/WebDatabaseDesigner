@@ -1,7 +1,27 @@
+html, body, .container-fluid {
+    height: 100%;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
 .btn-div-wdd {
     text-align: center;
-    padding-top: 0.5%;
     padding-bottom: 0.5%;
+    background: #009688;
+    height: 15%;
+}
+
+.title-wdd {
+    margin-top: 0;
+    font-weight: bold;
+    color: #ffffff
+}
+
+.title-btn {
+    background-color: #ffffff !important;
+    color: #009688 !important;
 }
 
 .btn-wdd {

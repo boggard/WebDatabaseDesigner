@@ -6,7 +6,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
         timeout(function () {
             setDraggable();
             addAllConnections(self.tables);
-        }, 10);
+        }, 50);
         self.addTable = function (editTable) {
             uibModal.open({
                 animation: true,
@@ -31,7 +31,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                     setDraggable();
                     addConnections(table);
                     self.setToStorage();
-                }, 10);
+                }, 50);
             }).catch(function (res) {
                 if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
                     throw res;

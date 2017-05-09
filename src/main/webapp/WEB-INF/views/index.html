@@ -44,42 +44,43 @@
     </style>
 </head>
 <body ng-app="wdd">
-<div ng-controller="mainController as mainCtrl">
+<div class="container-fluid" ng-controller="mainController as mainCtrl">
     <script type="text/ng-template" id="tableModal">
         <div th:insert="tableModal"></div>
     </script>
-    <div class="row">
-        <div class="col-sm-12 btn-div-wdd">
-            <a ng-click="mainCtrl.addTable()" class="btn btn-primary btn-fab btn-wdd"><i
-                    class="material-icons">add</i></a>
-            <a ng-click="mainCtrl.getSql()" class="btn btn-primary btn-fab btn-wdd"><i class="material-icons">file_download</i></a>
-        </div>
-        <div id="network" class="col-sm-12 jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
-            <div ng-repeat="table in mainCtrl.tables">
-                <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)"
-                     ng-style="{'left' : '{{table.leftPos}}px', 'top' : '{{table.topPos}}px'}">
-                    <div class="table-caption">
-                        {{table.name}}
-                    </div>
-                    <div class="table-fields">
-                        <table class="table table-bordered">
-                            <tbody>
-                            <tr ng-repeat="field in table.fields" ng-attr-id="{{table.name}}-{{field.name}}"
-                                class="field">
-                                <td>
-                                    <span ng-if="field.primaryKey">🔑</span>{{field.name}}
-                                </td>
-                                <td>{{field.type}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+    <div class="col-sm-12 btn-div-wdd">
+        <h1 class="title-wdd">Web Database Designer</h1>
+        <a ng-click="mainCtrl.addTable()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+                class="material-icons">add</i></a>
+        <a ng-click="mainCtrl.getSql()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+                class="material-icons">file_download</i></a>
+    </div>
+    <div id="network"
+         class="col-sm-12 jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
+        <div ng-repeat="table in mainCtrl.tables">
+            <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)"
+                 ng-style="{'left' : '{{table.leftPos}}px', 'top' : '{{table.topPos}}px'}">
+                <div class="table-caption">
+                    {{table.name}}
+                </div>
+                <div class="table-fields">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr ng-repeat="field in table.fields" ng-attr-id="{{table.name}}-{{field.name}}"
+                            class="field">
+                            <td>
+                                <span ng-if="field.primaryKey">🔑</span>{{field.name}}
+                            </td>
+                            <td>{{field.type}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 
 

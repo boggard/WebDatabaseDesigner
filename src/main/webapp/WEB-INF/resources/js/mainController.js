@@ -1,5 +1,5 @@
-app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'mainService',
-    function (uibModal, scope, sce, timeout, mainService) {
+app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'mainService', 'Upload',
+    function (uibModal, scope, sce, timeout, mainService, Upload) {
         var self = this;
         var localTables = localStorage.getItem("tables");
         self.tables = localTables !== null ? angular.fromJson(localTables) : [];
@@ -64,6 +64,33 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
         self.clear = function () {
             removeAllConnection(self.tables);
             self.tables = [];
+        };
+
+        self.uploadFiles = function (file) {
+            if (file) {
+                file.upload = Upload.upload({
+                    url: "/parse_sql",
+                    file: file
+                });
+
+                file.upload.then(function (response) {
+                    self.clear();
+                    self.tables = response.data;
+                    var left = 0, top = 0;
+                    self.tables.forEach(function (elem) {
+                        elem.leftPos = left;
+                        elem.topPos = top;
+                        left += 100;
+                        top += 100;
+                    });
+                    timeout(function () {
+                        setDraggable();
+                        addAllConnections(self.tables);
+                    }, 500);
+                }, function (response) {
+
+                });
+            }
         };
 
         window.onbeforeunload = self.setToStorage;

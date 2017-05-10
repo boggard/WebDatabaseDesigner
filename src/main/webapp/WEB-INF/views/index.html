@@ -14,6 +14,9 @@
     <script type="text/javascript" th:src="@{js/libs/jquery-3.2.1.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/material.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/ripples.js}"></script>
+    <script type="text/javascript" th:src="@{js/libs/ng-file-upload-shim.min.js}"></script>
+    <!-- for no html5 browsers support -->
+    <script type="text/javascript" th:src="@{js/libs/ng-file-upload.min.js}"></script>
 
     <link th:href="@{css/libs/jsPlumbToolkit-defaults.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{css/libs/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
@@ -55,6 +58,8 @@
                 class="material-icons">add</i></a>
         <a ng-click="mainCtrl.getSql()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">file_download</i></a>
+        <a type="file" ngf-select="mainCtrl.uploadFiles($file)" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+                class="material-icons">file_upload</i></a>
         <a ng-click="mainCtrl.clear()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">delete</i></a>
     </div>

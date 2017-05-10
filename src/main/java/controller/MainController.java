@@ -4,10 +4,8 @@ import dto.DBTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import service.SqlService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -39,6 +37,12 @@ public class MainController {
         response.setHeader("Content-Disposition", "filename=\"" + fileName + "\"");
         response.getOutputStream().write(bytes);
         response.flushBuffer();
+    }
+
+    @RequestMapping(value = "/parse_sql", method = RequestMethod.POST)
+    @ResponseBody
+    public List<DBTable> parseSql(@RequestParam("file") MultipartFile file) throws IOException {
+        return sqlService.parseSql(new String(file.getBytes()));
     }
 }
 

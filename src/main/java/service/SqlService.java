@@ -10,4 +10,7 @@ import java.util.List;
 public interface SqlService {
 
     byte[] generateSql(List<DBTable> dbTables);
+
+    List<DBTable> parseSql(String sql);
+
 }

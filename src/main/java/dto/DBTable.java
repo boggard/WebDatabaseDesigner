@@ -1,5 +1,6 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,8 +9,8 @@ import java.util.List;
 public class DBTable {
 
     private String name;
-    private List<DBTableField> fields;
-    private List<DBForeignKey> foreignKeys;
+    private List<DBTableField> fields = new ArrayList<DBTableField>();
+    private List<DBForeignKey> foreignKeys = new ArrayList<DBForeignKey>();
 
     public String getName() {
         return name;

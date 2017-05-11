@@ -1,8 +1,22 @@
 app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'mainService', 'Upload',
     function (uibModal, scope, sce, timeout, mainService, Upload) {
         var self = this;
+        self.link = function () {
+            self.tables.forEach(function (table) {
+                table.foreignKeys.forEach(function (key) {
+                    key.table = self.tables.find(function (elem) {
+                        return elem.name === key.table.name;
+                    });
+                    key.foreignField = key.table.fields.find(function (elem) {
+                        return elem.name === key.foreignField.name;
+                    })
+                })
+            });
+        };
+
         var localTables = localStorage.getItem("tables");
         self.tables = localTables !== null ? angular.fromJson(localTables) : [];
+        self.link();
         timeout(function () {
             setDraggable();
             addAllConnections(self.tables);
@@ -15,6 +29,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                 templateUrl: 'tableModal',
                 controller: 'tableController',
                 controllerAs: 'tableCtrl',
+                backdrop: 'static',
                 resolve: {
                     tables: function () {
                         return self.tables;
@@ -76,6 +91,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                 file.upload.then(function (response) {
                     self.clear();
                     self.tables = response.data;
+                    self.link();
                     var left = 0, top = 0;
                     self.tables.forEach(function (elem) {
                         elem.leftPos = left;
@@ -92,6 +108,7 @@ app.controller('mainController', ['$uibModal', '$scope', '$sce', '$timeout', 'ma
                 });
             }
         };
+
 
         window.onbeforeunload = self.setToStorage;
     }]);

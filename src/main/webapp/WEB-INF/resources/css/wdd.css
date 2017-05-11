@@ -146,6 +146,7 @@ html, body, .container-fluid {
 
 .error-icon-wdd {
     color: #f44336;
+    cursor: pointer;
 }
 
 .modal-content .modal-footer {

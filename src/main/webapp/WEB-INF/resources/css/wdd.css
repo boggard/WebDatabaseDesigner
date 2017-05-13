@@ -2,8 +2,19 @@ html, body, .container-fluid {
     height: 100%;
 }
 
+#network {
+    width: 100%;
+    height: 85%;
+    border: 1px solid lightgray;
+    background: whitesmoke;
+}
+
 .container-fluid {
     padding: 0;
+}
+
+.table-fields-wdd {
+    margin-top: 2%;
 }
 
 .btn-div-wdd {

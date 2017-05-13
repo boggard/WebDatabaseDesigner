@@ -2,12 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WDD</title>
     <script type="text/javascript" th:src="@{js/libs/jsplumb.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/vis.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/angular-sanitize.min.js}"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script type="text/javascript" th:src="@{js/libs/ui-bootstrap-tpls-2.5.0.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/smart-table.min.js}"></script>
     <script type="text/javascript" th:src="@{js/libs/FileSaver.min.js}"></script>
@@ -32,19 +31,7 @@
     <script type="text/javascript" th:src="@{js/mainService.js}"></script>
     <script type="text/javascript" th:src="@{js/mainController.js}"></script>
     <script type="text/javascript" th:src="@{js/tableController.js}"></script>
-    <script type="text/javascript" th:src="@{js/contenteditableDirective.js}"></script>
-    <script type="text/javascript" th:src="@{js/htmlFilter.js}"></script>
-    <script type="text/javascript" th:src="@{js/compileDirective.js}"></script>
     <script type="text/javascript" th:src="@{js/designer.js}"></script>
-    <style type="text/css">
-        #container0, #container1 {
-            float: left;
-            height: 100px;
-            width: 100px;
-            border: 1px solid black;
-            margin: 10px;
-        }
-    </style>
 </head>
 <body ng-app="wdd">
 <div class="container-fluid" ng-controller="mainController as mainCtrl">
@@ -64,14 +51,14 @@
                 class="material-icons">delete</i></a>
     </div>
     <div id="network"
-         class="col-sm-12 jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan">
+         class="col-sm-12 drag-drop jtk-surface jtk-surface-nopan">
         <div ng-repeat="table in mainCtrl.tables">
             <div class="table-node" ng-attr-id="{{table.name}}" ng-dblclick="mainCtrl.addTable(table)"
                  ng-style="{'left' : '{{table.leftPos}}px', 'top' : '{{table.topPos}}px'}">
                 <div class="table-caption">
                     {{table.name}}
                 </div>
-                <div class="table-fields">
+                <div class="table-fields-wdd">
                     <table class="table table-bordered">
                         <tbody>
                         <tr ng-repeat="field in table.fields" ng-attr-id="{{table.name}}-{{field.name}}"

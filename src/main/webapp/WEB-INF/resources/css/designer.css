@@ -1,38 +1,4 @@
-#network {
-    width: 100%;
-    height: 85%;
-    border: 1px solid lightgray;
-    background: whitesmoke;
-}
-
-.demo {
-    /* for IE10+ touch devices */
-    touch-action: none;
-}
-
-/** ELEMENT POSITIONS **/
-#dragDropWindow1 {
-    top: 76px;
-    left: 100px;
-}
-
-#dragDropWindow2 {
-    top: 148px;
-    left: 600px;
-}
-
-#dragDropWindow3 {
-    top: 340px;
-    left: 100px;
-}
-
-#dragDropWindow4 {
-    top: 416px;
-    left: 600px;
-}
-
-/** ELEMENTS **/
-.drag-drop-demo .table-node {
+.drag-drop .table-node {
     font-family: serif;
     font-style: italic;
     background-color: white;
@@ -65,24 +31,18 @@
     opacity: 0.9;
 }
 
-.drag-drop-demo a, .drag-drop-demo a:visited {
+.drag-drop a, .drag-drop a:visited {
     color: #057D9F;
 }
 
-.drag-drop-demo a:hover {
+.drag-drop a:hover {
     color: orange;
 }
 
-/** LINKS IN WINDOWS **/
 .drag-locked {
     border: 1px solid red;
 }
 
-.cmdLink {
-    font-size: 0.80em;
-}
-
-/** DRAG/DROP CLASSES **/
 .dragActive {
     border: 2px dotted orange;
 }
@@ -91,45 +51,8 @@
     border: 1px dotted red;
 }
 
-/** INFO WINDOW **/
-#list {
-    text-align: center;
-    display: none;
-    font-size: 90%;
-    position: absolute;
-    width: 500px;
-    left: 50%;
-    margin-left: -250px;
-    top: 100px;
-    background-color: white;
-    padding: 5px;
-    border: 1px solid #456;
-    opacity: 0.8;
-    border-radius: 8px;
-    color: #444;
-}
-
-#list table {
-    width: 100%;
-}
-
-#list table th, #list strong {
-    color: black;
-    font-size: 12px;
-    text-align: center;
-}
-
 path, .jtk-endpoint {
     cursor: pointer;
-}
-
-/**MY**/
-/*.table-caption {
-    border-bottom: 1px solid #346789; ;
-}*/
-
-.table-fields {
-    margin-top: 2%;
 }
 
 .jtk-surface-nopan {

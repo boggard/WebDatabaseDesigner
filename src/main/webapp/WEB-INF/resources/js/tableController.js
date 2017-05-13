@@ -128,6 +128,24 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
             return true;
         };
 
+        self.removeTable = function () {
+            self.table.foreignKeys.forEach(function (fk) {
+                if (fk.connection !== undefined) {
+                    removeConnection(fk);
+                }
+            });
+            self.tables.forEach(function (table) {
+                table.foreignKeys.forEach(function (fk, index, arr) {
+                    if (fk.connection !== undefined && fk.table === self.table) {
+                        removeConnection(fk);
+                        arr.splice(index, 1);
+                    }
+                })
+            });
+            tables.splice(tables.indexOf(self.table), 1);
+            modalInstance.dismiss('cancel');
+        };
+
         return self;
     }]);
 

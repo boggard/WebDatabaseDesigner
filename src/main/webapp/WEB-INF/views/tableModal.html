@@ -29,24 +29,24 @@
                         <input class="form-control" id="focusedInput3" type="text" ng-model="field.defaultVal">
                     </div>
                     <div class="checkbox col-sm-3" style="padding-left: 0;padding-right: 0">
-                        <label>ПК<br>
+                        <label title="Первичный ключ">ПК<br>
                             <input type="checkbox" ng-model="field.primaryKey">
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
-                        <label class="check-label-wdd">ВК<br>
+                        <label class="check-label-wdd" title="Внешний ключ">ВК<br>
                             <input type="checkbox" ng-model="field.foreignKey"
                                    ng-change="tableCtrl.actionForeignKey(field)">
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
-                        <label class="check-label-wdd">НН<br>
+                        <label class="check-label-wdd" title="Не нулевое значение">НН<br>
                             <input type="checkbox" ng-model="field.notNull">
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
-                        <label class="check-label-wdd">У<br>
+                        <label class="check-label-wdd" title="Уникальное значение">У<br>
                             <input type="checkbox" ng-model="field.unique">
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
-                        <label class="check-label-wdd">АИ<br>
+                        <label class="check-label-wdd" title="Автоинкремент">АИ<br>
                             <input type="checkbox" ng-model="field.autoIncrement">
                             <span class="checkbox-material"><span class="check"></span></span>
                         </label>
@@ -96,13 +96,18 @@
             </div>
         </div>
         <div class="modal-footer" ng-if="!tableCtrl.changing">
-            <a ng-click="tableCtrl.addTable()" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+            <a ng-click="tableCtrl.addTable()" title="Добавить таблицу"
+               class="btn btn-primary btn-fab btn-wdd field-wdd"><i
                     class="material-icons">done</i></a>
-            <a ng-click="tableCtrl.cancel()" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+            <a ng-click="tableCtrl.cancel()" title="Отмента" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
                     class="material-icons">clear</i></a>
         </div>
         <div class="modal-footer" ng-if="tableCtrl.changing">
-            <a ng-click="tableCtrl.addTable()" class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+            <a ng-click="tableCtrl.removeTable()" title="Удалить таблицу"
+               class="btn btn-primary btn-fab btn-wdd field-wdd"><i
+                    class="material-icons">delete</i></a>
+            <a ng-click="tableCtrl.addTable()" title="Закрыть окно изменения"
+               class="btn btn-primary btn-fab btn-wdd field-wdd"><i
                     class="material-icons">vertical_align_bottom</i></a>
         </div>
     </div>

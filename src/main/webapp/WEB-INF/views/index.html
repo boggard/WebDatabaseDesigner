@@ -41,13 +41,14 @@
 
     <div class="col-sm-12 btn-div-wdd">
         <h1 class="title-wdd">Web Database Designer</h1>
-        <a ng-click="mainCtrl.addTable()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+        <a ng-click="mainCtrl.addTable()" title="Добавить таблицу" class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">add</i></a>
-        <a ng-click="mainCtrl.getSql()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+        <a ng-click="mainCtrl.getSql()" title="Сгененировать SQL" class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">file_download</i></a>
-        <a type="file" ngf-select="mainCtrl.uploadFiles($file)" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+        <a type="file" ngf-select="mainCtrl.uploadFiles($file)" title="Построить диаграмму из SQL"
+           class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">file_upload</i></a>
-        <a ng-click="mainCtrl.clear()" class="btn btn-primary title-btn btn-fab btn-wdd"><i
+        <a ng-click="mainCtrl.clear()" title="Удалить все таблицы" class="btn btn-primary title-btn btn-fab btn-wdd"><i
                 class="material-icons">delete</i></a>
     </div>
     <div id="network"

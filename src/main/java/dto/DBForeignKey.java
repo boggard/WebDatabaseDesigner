@@ -32,4 +32,24 @@ public class DBForeignKey {
     public void setField(DBTableField field) {
         this.field = field;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DBForeignKey that = (DBForeignKey) o;
+
+        if (!field.equals(that.field)) return false;
+        if (!table.equals(that.table)) return false;
+        return foreignField.equals(that.foreignField);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = field.hashCode();
+        result = 31 * result + table.hashCode();
+        result = 31 * result + foreignField.hashCode();
+        return result;
+    }
 }

@@ -9,6 +9,7 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
             self.table = editTable;
             self.changing = true;
             self.tables.splice(self.tables.indexOf(editTable), 1);
+            self.caption = "Изменение таблицы";
         } else {
             self.table = {
                 name: 'Table',
@@ -16,6 +17,7 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
                 foreignKeys: []
             };
             self.mainBtn = "Добавить";
+            self.caption = "Добавление таблицы";
         }
 
         self.addField = function () {

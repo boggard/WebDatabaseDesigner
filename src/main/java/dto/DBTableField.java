@@ -14,6 +14,17 @@ public class DBTableField {
     private boolean unique;
     private boolean autoIncrement;
 
+    public DBTableField() {
+
+    }
+
+    public DBTableField(String name, String type, boolean primaryKey) {
+        this();
+        this.name = name;
+        this.type = type;
+        this.primaryKey = primaryKey;
+    }
+
     public String getName() {
         return name;
     }
@@ -76,5 +87,35 @@ public class DBTableField {
 
     public void setDefaultVal(String defaultVal) {
         this.defaultVal = defaultVal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DBTableField that = (DBTableField) o;
+
+        if (primaryKey != that.primaryKey) return false;
+        if (foreignKey != that.foreignKey) return false;
+        if (notNull != that.notNull) return false;
+        if (unique != that.unique) return false;
+        if (autoIncrement != that.autoIncrement) return false;
+        if (!name.equals(that.name)) return false;
+        if (!type.equals(that.type)) return false;
+        return defaultVal != null ? defaultVal.equals(that.defaultVal) : that.defaultVal == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + type.hashCode();
+        result = 31 * result + (defaultVal != null ? defaultVal.hashCode() : 0);
+        result = 31 * result + (primaryKey ? 1 : 0);
+        result = 31 * result + (foreignKey ? 1 : 0);
+        result = 31 * result + (notNull ? 1 : 0);
+        result = 31 * result + (unique ? 1 : 0);
+        result = 31 * result + (autoIncrement ? 1 : 0);
+        return result;
     }
 }

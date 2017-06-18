@@ -35,4 +35,24 @@ public class DBTable {
     public void setForeignKeys(List<DBForeignKey> foreignKeys) {
         this.foreignKeys = foreignKeys;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DBTable dbTable = (DBTable) o;
+
+        if (!name.equals(dbTable.name)) return false;
+        if (!fields.equals(dbTable.fields)) return false;
+        return foreignKeys.equals(dbTable.foreignKeys);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + fields.hashCode();
+        result = 31 * result + foreignKeys.hashCode();
+        return result;
+    }
 }

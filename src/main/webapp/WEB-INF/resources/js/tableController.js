@@ -78,7 +78,7 @@ app.controller('tableController', ['$uibModalInstance', '$timeout', '$sce', 'tab
                 }
             } else {
                 var elem = self.table.foreignKeys.find(function (element, index, array) {
-                    return element.field === field;
+                    return element.field.name === field.name;
                 });
                 var index = self.table.foreignKeys.indexOf(elem);
                 if (index !== -1) {
